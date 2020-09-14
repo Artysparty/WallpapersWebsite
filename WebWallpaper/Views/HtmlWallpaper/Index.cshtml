@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Wallpapers.Entities.Wallpaper>
+
+@{
+    ViewData["Title"] = "Главная - список обоев";
+}
+
+
+<h1 align="center">Список обоев</h1>
+
+<p>
+    <a asp-action="Create">Создать новые обои</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Название
+            </th>
+            <th>
+               Категория
+            </th>
+            <th>
+                Разрешение
+            </th>
+            <th>
+                Формат
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Section)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.XResolution)
+                    @Html.Display("x")
+                    @Html.DisplayFor(modelItem => item.YResolution)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Format)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Обновить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
